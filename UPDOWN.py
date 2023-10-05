@@ -4,22 +4,28 @@
 - 정답을 맞추면, "정답" 출력 '''
 
 import random
+answer=random.randint(1,100)
 
-x = random.randint(1, 100)
-while True:
-    y = input("숫자를 입력하세여:")
+def numb_verify():                  #입력한 값이 숫자를 잘 입력하였는지 확인
+    numb2=''
+    while True:                                         #입력한 값의 type이 int가 아니라면 계속 반복       
+        if not numb2.isdigit():                         #numb2가 문자형 숫자가 아니라면 다시 입력받는다.
+            numb2=input('숫자를 입력하세요:')
+        else:
+            return int(numb2)
 
-    while type(y) != int:  # 입력한 것이 숫자인지 판별하는 부분
-        try:
-            y = int(y)     # 정답을 보니 isdigit라는 함수가 있네
-        except:
-            print("숫자가 아닌 것을 입력했습니다.")
-            y = input("다시 입력하세요:")
+def updown(answer):                 #updown 게임 함수
+    cnt=0
+    x=0
+    while answer!=x:                #정답을 맞출때까지 반복
+        x=numb_verify()
+        if answer>x:
+            print("UP")
+            cnt+=1
+        elif answer < x:
+            print("DOWN")
+            cnt+=1
+        else:           
+            print(f"정답입니다 입력한 숫자:{x}  정답인 숫자:{answer}, 입력한 횟수:{cnt}")
 
-    if x > y:
-        print("UP")
-    elif x < y:
-        print("DOWN")
-    else:
-        print(f"정답 x={x}, y={y}")
-        break
+updown(answer)
