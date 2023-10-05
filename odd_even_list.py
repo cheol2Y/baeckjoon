@@ -7,29 +7,16 @@
 '''
 import random
 
-lst=[]
-for _ in range(20):
-    x=random.randint(1,100)
-    lst.append(x)
-y=set(lst)          #중복되는 숫자 제거
-lst_noDuple=list(y)
-odd=[]
-even=[]
-for i in range(len(lst_noDuple)):
-    if lst_noDuple[i] %2 ==0:
-        even.append(lst_noDuple[i])
-    else:
-        odd.append(lst_noDuple[i])
-even.sort(reverse=True)
+i=10        #홀짝의 개수
+odd=random.sample(range(1,101,2),i)
 odd.sort()
-lst_final=[]
-if len(even) > len(odd):
-    for i in range(len(odd)):
-        lst_final.append(odd[i])
-        lst_final.append(even[i])
-    while i < len(even):
-        lst_final.append(even[i])
-        i+=1
-print(even)
+even=random.sample(range(2,101,2),i)
+even.sort(reverse=True)
+lst=[]
+for k in range(len(odd)):
+    lst.append(odd[k])
+    lst.append(even[k])
+
 print(odd)
-print(lst_final)
+print(even)
+print(lst)
