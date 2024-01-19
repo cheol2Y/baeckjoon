@@ -8,3 +8,4 @@ join
 on t1.cart_id = t2.cart_id
 where t1.name ='MILK'
 group by t1.cart_id
+order by t1.cart_id
