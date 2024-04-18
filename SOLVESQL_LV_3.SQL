@@ -49,3 +49,36 @@ JOIN olist_order_payments_dataset T2
 WHERE T1.order_purchase_timestamp >= '2018-01-01'
 GROUP BY SUBSTRING(T1.order_purchase_timestamp,1,10)
 ORDER BY 1 ASC
+
+
+-- 멘토링 짝꿍 리스트
+SELECT
+  mentee.employee_id AS mentee_id,
+  mentee.name AS mentee_name,
+  mentor.employee_id AS mentor_id,
+  mentor.name AS mentor_name
+FROM
+  (
+    SELECT
+      *
+    FROM
+      employees
+    WHERE
+      employees.JOIN_DATE BETWEEN '2021-09-30' AND '2022-03-31'
+  ) mentee
+
+  RIGHT JOIN 
+
+  (
+    SELECT
+      *
+    FROM
+      employees
+    WHERE
+      employees.JOIN_DATE <= '2019-12-31'
+  ) mentor 
+
+      ON mentee.department <> mentor.department
+ORDER BY
+  mentee.employee_id,
+  mentor.employee_id;
