@@ -35,3 +35,17 @@ FROM
 WHERE order_purchase_timestamp LIKE '2017-01%'
 GROUP BY SUBSTRING(order_purchase_timestamp, 1,11)
 ORDER BY SUBSTRING(order_purchase_timestamp, 1,11)
+
+
+-- 쇼핑몰의 일일 매출액과 ARPPU
+SELECT 
+  SUBSTRING(T1.order_purchase_timestamp,1,10) AS dt,
+  COUNT(DISTINCT T1.customer_id) AS pu,
+  ROUND(SUM(T2.payment_value),2) AS revenue_daily,
+  ROUND(SUM(T2.payment_value) / COUNT(DISTINCT T1.customer_id),2 ) AS arppu 
+FROM olist_orders_dataset T1
+JOIN olist_order_payments_dataset T2
+  ON T1.ORDER_ID = T2.ORDER_ID
+WHERE T1.order_purchase_timestamp >= '2018-01-01'
+GROUP BY SUBSTRING(T1.order_purchase_timestamp,1,10)
+ORDER BY 1 ASC
