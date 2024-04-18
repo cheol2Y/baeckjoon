@@ -24,3 +24,14 @@ FROM
     records
 GROUP BY 
     region;
+
+-- 배송 예정일 예측 성공과 실패
+SELECT 
+    SUBSTRING(order_purchase_timestamp, 1,10) AS purchase_date,
+    COUNT(CASE WHEN order_delivered_customer_date <= order_estimated_delivery_date THEN 1  END) AS success,
+    COUNT(CASE WHEN order_delivered_customer_date > order_estimated_delivery_date THEN 1 END) AS fail
+FROM 
+    olist_orders_dataset
+WHERE order_purchase_timestamp LIKE '2017-01%'
+GROUP BY SUBSTRING(order_purchase_timestamp, 1,11)
+ORDER BY SUBSTRING(order_purchase_timestamp, 1,11)
