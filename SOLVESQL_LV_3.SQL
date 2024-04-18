@@ -12,3 +12,15 @@ WHERE (MEDAL = 'Bronze' OR MEDAL = 'Silver' OR MEDAL = 'Gold')
 GROUP BY T1.athlete_id, T2.NAME
 HAVING COUNT(DISTINCT T1.TEAM_ID) >= 2
 ORDER BY T2.NAME;
+
+
+-- 지역별 주문의 특징
+SELECT 
+    region AS Region,
+    COUNT(DISTINCT CASE WHEN category = 'Furniture' THEN order_id END) AS Furniture,
+    COUNT(DISTINCT CASE WHEN category = 'Office Supplies' THEN order_id END) AS 'Office Supplies',
+    COUNT(DISTINCT CASE WHEN category = 'Technology' THEN order_id END) AS Technology
+FROM 
+    records
+GROUP BY 
+    region;
