@@ -1,4 +1,4 @@
-# 가구 판매의 비중이 높았던 날 찾기
+# 가구 판매의 비중이 높았던 날 찾기 
 WITH daily_orders AS (
   SELECT 
     DATE(order_date) AS order_date,
