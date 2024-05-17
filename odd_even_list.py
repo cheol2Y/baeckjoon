@@ -5,7 +5,7 @@
 
 예) 4 1 3 2 6 5 -> 1 6 3 4 5 2
 '''
-import random
+import random 
 
 i=10        #홀짝의 개수
 odd=random.sample(range(1,101,2),i)
