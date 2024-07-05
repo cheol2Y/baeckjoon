@@ -2,7 +2,7 @@
 WITH YEAR_TAB AS (
     SELECT ID, year
     FROM games
-    WHERE YEAR >= 2000
+    WHERE YEAR >= 2000 
 )
 SELECT T2.NAME
 FROM records T1
