@@ -6,7 +6,7 @@ WITH YEAR_TAB AS (
 )
 SELECT T2.NAME
 FROM records T1
-JOIN athletes T2 ON T1.athlete_id = T2.ID
+JOIN athletes T2 ON T1.athlete_id = T2.ID 
 WHERE (MEDAL = 'Bronze' OR MEDAL = 'Silver' OR MEDAL = 'Gold')
     AND GAME_ID IN (SELECT ID FROM YEAR_TAB) 
 GROUP BY T1.athlete_id, T2.NAME 
