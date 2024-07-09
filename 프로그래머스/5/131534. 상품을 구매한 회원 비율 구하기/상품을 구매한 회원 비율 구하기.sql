@@ -4,7 +4,7 @@
 -- 년 월 별로 출력
 -- ORDER BY 년을 기준 오름, 월을 기준 오름
 
-WITH INFO AS (
+WITH INFO AS ( 
     SELECT USER_ID 
     FROM USER_INFO 
     WHERE YEAR(JOINED)=2021  
