@@ -1,5 +1,5 @@
 -- 코드를 입력하세요
-select 
+select  
     Year(t1.SALES_DATE) as year, 
     MONTH(t1.SALES_DATE) as month, 
     t2.GENDER,
